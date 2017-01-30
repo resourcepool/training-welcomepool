@@ -57,7 +57,8 @@ Create the model of the web app with the differents layers.
 # Day 4
 
 ## Intégration
-Download the provided front pages in the folder **resources/pages**
+Download the provided front architecture in the folder **resources/**
+Integrate it in your project.
 Transform it in JSP and link them to your backend.
 No Java code in JSP pages.
 Avoid duplicate code in views (title bar & footer).
