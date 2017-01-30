@@ -4,6 +4,8 @@ The welcome project
 The objective of this mini-project is to create an application with JEE in only 4 days. This project requires backend skills (Java) & frontend skills (JSP, HTML, JavaScript).
 You should work together to be able to finish on time.
 
+![Interface](/../master/screen.png?raw=true "Admin Panel Interface")
+
 # Pre-requisites
 You will develop your project as a team, with Agile management. At the end we want to have only one project on a github.
 We will organize a daily retrospective to explain the problems you encountered.
