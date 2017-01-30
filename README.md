@@ -1,73 +1,74 @@
 The welcome project
 ===================
 
-The objective of this mini-project is to create an application with JEE in only 4 days. This project requires backend skills (Java) & frontend skills (JSP, HTML, JavaScript).
-You should work together to be able to finish on time.
+The goal of this mini-project is to refresh your **Java / JEE** skills in a 4 day rush team-effort.  
+This project requires both **Backend** (Java/JEE), **SQL**, **Ops** & **Frontend** skills (JSP, HTML, JavaScript).  
+The 4-day project has to be released in **production** on a dedicated server, and **demonstrated** by the team in a full-house presentation.
 
 ![Interface](/../master/screen.png?raw=true "Admin Panel Interface")
 
-# Pre-requisites
-You will develop your project as a team, with Agile management. At the end we want to have only one project on a github.
-We will organize a daily retrospective to explain the problems you encountered.
-Do not hesitate to work in pair, to think together how you will develop the project.
+# Pool Conditions
+You will develop your project as a **team**, with minimum Agile management (we recommend the Kanban method).  
+**One** git repository will be given to the team and shall be used properly. The workflow details are left to the team's appreciation.
 
-   * Daily scrum
-   * 1 project on github
+Every day, the team will be able to attend a retrospective at the time of their choice, in presence of a coach, to discuss the following matters:
+ * The challenges encountered the day before
+ * The current tasks, the remaining tasks
+ * The global workflow efficiency
+ 
+In terms of team work, you are free to try anything you want.  
+Do not hesitate to try out eXtreme Programming concepts such as Pair Programming, Code Reviews, Test-Driven Development, and take the time to plan important parts of your project in common.
+
+In terms of delivery, these are the requirements:
    * Clean & commented code
-   * Don't use Spring/SpringBoot
+   * Use of the whole JEE stack is allowed (JSP, Servlet, JSTL, JSF?, JPA, JTA, EJB, ...)
+   * Use of EclipseLink ORM is allowed
+   * Use of spring is not allowed
 
 # The Project    
-The project a web app in JEE. Your objective is to create an administration panel to manage code reviews.
-To do that, we must be able to have some features :
-    
-  * Create a new member with these attributes (name, birthdate, promotion)
-  * Create a new promotion (name, members)
-  * Create a code review (name, datetime, promotion)
+The project consists of a JEE webapp.  
+Your goal is to create an administration panel to manage a schedule of code reviews and milestones.
+In particular, the following items will be implemented:
+  * Create a new member: name, email, birthdate, class
+  * Create a new class: name, members
+  * Create a code review schedule: name, description, datetime, class
 
-A member can be editable, he belongs to a promotion and have a name and a birthdate.
-A promotion is a group of members. It needs a name and is able to retrieve its list of members.    
-A code review is a meeting for members of a promotion. It must have a date & hour, a name and be linked to a promotion.
+A **member** can be edited and belongs to a class. It has both a name, an email and a birthdate.  
+A **class** is a group of members. The name refers to their arrival date (Class of February 2017 for instance). It needs a name and has between 0 and an infinity of members. Users are members of zero to one class at most.  
+A **code review** is a meeting for members of a class. It must have a date & hour, a name, a description, and of course the targeted class.
 
 You don't need to implement security like login or user account at the moment.
 We provide you the front pages but you'll need to edit it.
 
-# Day 1    
 ## Setup environment
 
 ### MySQL Database
-First, install a local **MySQL** server and eventually a PhpMyAdmin to manage your database in a web app.
+First, install a local **MySQL** server & a SQL administration tool (MySQL Workbench or PhpMyAdmin).
 
 ### Your IDE
-You are free to use the IDE you want to develop the project (Eclipse or IntelliJ). 
-Eclipse should be a better idea ;)
-Install a **Tomcat 8.0** server. Search & read the doc to know how to do :)
+For this exercise, you will have to use Eclipse.  
+Install the latest **Wildfly** application server. Search & read the docs to know how to do :)
 
-### GitHub repository
-Create a repository on github and name it **ebiz-welcome**
-Everyone must be able to push code on the repository.
-The important fact here is to **create your workflow as a team**.
-
-
-# Day 2/3
+### Git repository
+A new repository will be provided, with owner rights.  
+Everyone must be able to push code on the repository. The important fact here is to **create your orwn team workflow**.
 
 ## Project Architecture
 Take your time and brainstorm in group to create a clean architecture for the project.
-We advise to use EclipseLink JPA for data persistence in your project, but you can use JPA API if you want.
-Don't use Hibernate!
-Create the model of the web app with the differents layers.
+We advise to use the EclipseLink ORM for data persistence in your project, through JPA.
+Create the main architecture for your web app.
 
-# Day 4
-
-## Intégration
-Download the provided front architecture in the folder **resources/**
+## Integration
+Download the provided web architecture in the **resources** directory.
 Integrate it in your project.
-Transform it in JSP and link them to your backend.
-No Java code in JSP pages.
-Avoid duplicate code in views (title bar & footer).
-Use a calendar widget for code reviews form.
+Use a nice calendar widget in the **code review** creation form.
+
+## Release & Demo
+ * For your release, we will provide you with a public server instance. You will need to release your code in production before the demonstration, along with the source code.
+ * Your demo must be following a client perspective. You are making the demonstration for the project they have asked you to deliver. Two parts can be prepared. The first part refers mostly to showing what you have done, and how you made things. The second part explains your technical choices, and your roadmap for further improvements.
 
 ### Provided content
-We provided you some content to help you in your work.
+We provided you with some content to help you bootstrap your work.
   - HTML architecture
   - Bootstrap 3
   - Jquery 3
@@ -79,9 +80,10 @@ Pages:
   - add_promotion.html
   - index.html
 
-# To go further
-
-  * Implement front validation with jQuery
-  * Implement backend tests
-
+# Bonus
+All is done on day 3?
+Here are a few features we as a customer would have loved to have available.
+ * Add an endpoint to see a fullscreen countdown for the next code review, for each class (to display on a TV Screen)
+ * Implement front validation with jQuery
+ * Implement backend tests
 
