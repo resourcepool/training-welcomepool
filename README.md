@@ -83,7 +83,11 @@ Pages:
 # Bonus
 All is done on day 3?
 Here are a few features we as a customer would have loved to have available.
- * Add an endpoint to see a fullscreen countdown for the next code review, for each class (to display on a TV Screen)
+ * Add a fullscreen Timer countdown page for the next code review, for each class (to display on a TV Screen)
+ * Add a search bar
+ * Handle multiple timers
+ * Connect to Google Agenda API
+ * Send notification emails (reminders)
  * Implement front validation with jQuery
  * Implement backend tests
 
