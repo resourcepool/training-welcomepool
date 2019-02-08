@@ -33,7 +33,7 @@ In particular, the following items will be implemented:
   * Create a new class: name, members
   * Create a code review schedule: name, description, datetime, class
 
-A **member** can be edited and belongs to a class. It has both a name, an email and a birthdate.  
+A **member** can be edited and belongs to a class. It has a name, an email and a birthdate.  
 A **class** is a group of members. The name refers to their arrival date (Class of February 2017 for instance). It needs a name and has between 0 and an infinity of members. Users are members of zero to one class at most.  
 A **code review** is a meeting for members of a class. It must have a date & hour, a name, a description, and of course the targeted class.
 
@@ -51,7 +51,7 @@ Install the latest **Wildfly** application server. Search & read the docs to kno
 
 ### Git repository
 A new repository will be provided, with owner rights.  
-Everyone must be able to push code on the repository. The important fact here is to **create your orwn team workflow**.
+Everyone must be able to push code on the repository. The important fact here is to **create your own team workflow**.
 
 ## Project Architecture
 Take your time and brainstorm in group to create a clean architecture for the project.
