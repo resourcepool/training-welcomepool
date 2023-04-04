@@ -14,9 +14,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.takima.master3;
+package main.java;
 
-import main.java.addMemberServlet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -35,7 +34,7 @@ import java.io.IOException;
  *
  * <p>
  * The servlet is registered and mapped to /HelloServlet using the {@linkplain WebServlet
- * @HttpServlet}. The {@link HelloService} is injected by CDI.
+ * @HttpServlet}. The {@link} is injected by CDI.
  * </p>
  *
  */
@@ -57,7 +56,7 @@ public class addMemberJspController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Logger logger = LoggerFactory.getLogger(addMemberServlet.class);
+        Logger logger = LoggerFactory.getLogger(addMemberJspController.class);
 
         if (request.getParameter("addMem") != null) {
             logger.info("COUCOU");
