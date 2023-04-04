@@ -15,9 +15,13 @@
 
     <!-- Bootstrap CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/jquery.dataTables.min.css" rel="stylesheet">
+
 
     <!-- Custom CSS -->
     <link href="css/style.css" rel="stylesheet">
+
+
 
     <!-- Custom Fonts -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -146,7 +150,7 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="table-responsive">
-                                        <table class="table table-hover table-striped">
+                                        <table id="dtMembers" lass="table table-hover table-striped">
                                             <thead>
                                                 <tr>
                                                     <th>Nom</th>
@@ -170,13 +174,6 @@
                                             </tbody>
 
                                         </table>
-                                        <div class="text-center">
-                                            <ul class="pagination">
-                                                <li><a href="#">1</a></li>
-                                                <li><a href="#">2</a></li>
-                                                <li><a href="#">3</a></li>
-                                            </ul>
-                                        </div>
                                     </div>
                                     <!-- /.table-responsive -->
                                 </div>
@@ -264,10 +261,11 @@
     </footer>
 
     <!-- jQuery -->
-    <script src="WEB-INF/js/jquery-3.1.1.min.js"></script>
+    <script src="js/jquery-3.1.1.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="WEB-INF/js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script type="module" src="js/index.js"></script>
 
 </body>
 
