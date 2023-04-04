@@ -1,0 +1,9 @@
+{
+  "files.watcherExclude": {
+    "**/target": true
+  },
+  "java.project.referencedLibraries": [
+    "lib/**/*.jar",
+    "/Users/nima/Downloads/wildfly-26.1.3.Final/modules/system/layers/base/com/mysql/main/mysql-connector-j-8.0.32.jar"
+  ]
+}
