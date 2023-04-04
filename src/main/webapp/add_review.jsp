@@ -58,7 +58,7 @@
     <div id="page-wrapper" class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Ajouter un membre</h1>
+                <h1 class="page-header">Prévoir une code Review</h1>
             </div>
             <!-- /.col-lg-12 -->
         </div>
@@ -77,11 +77,13 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="date">Date de la Code Review</label>
+                                        <br>
                                         <input id="date" class="datepicker" data-date-format="mm/dd/yyyy">
                                     </div>
                                     <div class="form-group">
                                         <label for="description">Description</label>
-                                        <textarea id="description" cols="50" rows="5"></textarea>
+                                        <br>
+                                        <textarea id="description" cols="50" rows="4"></textarea>
                                     </div>
 
                                     <div class="text-right">
