@@ -76,6 +76,13 @@
                                         <input type="text" class="input-lg form-control" id="name" name="name" placeholder="Nom">
                                     </div>
                                     <div class="form-group">
+                                        <label for="promotion">Promotion</label>
+                                        <select class="input-lg form-control" id="promotion">
+                                            <option>Février</option>
+                                            <option>Mars</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
                                         <label for="date">Date de la Code Review</label>
                                         <br>
                                         <input id="date" class="datepicker" data-date-format="mm/dd/yyyy">
@@ -85,6 +92,7 @@
                                         <br>
                                         <textarea id="description" cols="50" rows="4"></textarea>
                                     </div>
+
 
                                     <div class="text-right">
                                         <button type="submit" name="addReview" class="btn btn-lg btn-primary">Enregistrer</button>
