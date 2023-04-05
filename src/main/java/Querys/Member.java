@@ -1,4 +1,4 @@
-package Querys;
+package main.java.Querys;
 
 import java.sql.Date;
 
@@ -7,6 +7,7 @@ public class Member {
     private String name;
     private String email;
     private Date birthdate;
+    private String promotion;
     private int classId;
 
     public Member() {}
@@ -56,5 +57,13 @@ public class Member {
 
     public void setClassId(int classId) {
         this.classId = classId;
+    }
+
+    public void setPromotion(String promotion) {
+        this.promotion = promotion;
+    }
+
+    public String getPromotion() {
+        return promotion;
     }
 }

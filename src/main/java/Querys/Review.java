@@ -1,4 +1,4 @@
-package Querys;
+package main.java.Querys;
 
 import java.sql.Date;
 
@@ -7,15 +7,16 @@ public class Review {
     private String name;
     private String description;
     private Date date;
+    private String promotion;
     private int classId;
 
     public Review() {}
 
-    public Review(String name, String description, Date date, int classId) {
+    public Review(String name, String description, Date date, String promotion) {
         this.name = name;
         this.description = description;
         this.date = date;
-        this.classId = classId;
+        this.promotion = promotion;
     }
 
     public int getId() {
@@ -56,5 +57,11 @@ public class Review {
 
     public void setClassId(int classId) {
         this.classId = classId;
+    }
+
+    public String getPromotion(){return promotion;}
+
+    public void setPromotion(String promotion) {
+        this.promotion = promotion;
     }
 }
