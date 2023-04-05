@@ -16,6 +16,8 @@
  */
 package main.java;
 
+import main.java.Querys.Member;
+import main.java.Querys.MemberDAO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -26,6 +28,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.Date;
+import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 
 /**
  * <p>
@@ -49,7 +58,11 @@ public class addMemberJspController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        
+        List<String> classes = new ArrayList<>();
+        classes.add("Fevrier");
+        classes.add("Mars");
+        req.setAttribute("classes", classes);
+
         RequestDispatcher dispatcher = req.getRequestDispatcher("/add_member.jsp");
         dispatcher.forward(req, resp);
     }
@@ -61,6 +74,32 @@ public class addMemberJspController extends HttpServlet {
         if (request.getParameter("addMem") != null) {
             logger.info("COUCOU");
             logger.info(request.getParameter("name"));
+
+            String name = request.getParameter("name");
+            String email = request.getParameter("email");
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.FRANCE);
+
+            String dateInString = "1995-05-02";
+            java.util.Date utilbirthdate = new java.util.Date();
+            try {
+                utilbirthdate = formatter.parse(dateInString);
+            } catch (ParseException e) {
+                throw new RuntimeException(e);
+            }
+            java.sql.Date birthdate = new java.sql.Date(utilbirthdate.getTime());
+
+            String c_selected = request.getParameter("classes_selected");
+
+            String URL = "jdbc:mysql://localhost:3306/welcome_pool_Code_Review";
+            String USERNAME = "SVC_Java";
+            String PASSWORD = "1xqOOMTNMjnzZ76TPaRA";
+            MemberDAO mDAO = new MemberDAO(URL,USERNAME,PASSWORD);
+
+            try {
+                mDAO.addMember(new Member(name,email,birthdate,1));
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
         }
         response.sendRedirect("/Pool/index");
         //request.getRequestDispatcher("/index").forward(request,response);
