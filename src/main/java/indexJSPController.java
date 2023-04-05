@@ -46,6 +46,37 @@ public class indexJSPController extends HttpServlet {
         System.out.println("Servlet initialized successfully");
     }
 
+    public String classIdToPromotion(int classId) {
+        switch(classId){
+            case 1:
+                return "Janvier";
+            case 2:
+                return "Fevrier";
+            case 3:
+                return "Mars";
+            case 4:
+                return "Avril";
+            case 5:
+                return "Mai";
+            case 6:
+                return "Juin";
+            case 7:
+                return "Juillet";
+            case 8:
+                return "Aôut";
+            case 9:
+                return "Septembre";
+            case 10:
+                return "Octobre";
+            case 11:
+                return "Novembre";
+            case 12:
+                return "Décembre";
+            default:
+                return "PromotionInconnue";
+        }
+    }
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Logger logger = LoggerFactory.getLogger(indexJSPController.class);
@@ -56,6 +87,7 @@ public class indexJSPController extends HttpServlet {
         mems.add(m);
         logger.info(mems.get(0).getName());
         req.setAttribute("members", mems);
+        req.setAttribute("liusfh",1);
         req.getRequestDispatcher("index.jsp").forward(req, resp);
 
     }
