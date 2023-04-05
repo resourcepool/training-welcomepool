@@ -1,4 +1,4 @@
-package Querys;
+package main.java.Querys;
 
 import static org.junit.Assert.*;
 

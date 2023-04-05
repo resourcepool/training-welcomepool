@@ -1,4 +1,4 @@
-package Querys;
+package main.java.Querys;
 
 import java.sql.*;
 import java.util.ArrayList;

@@ -25,7 +25,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.*;
+import main.java.Querys.*;
+
 /**
  * <p>
  * A simple servlet taking advantage of features added in 3.0.
@@ -33,7 +36,7 @@ import java.util.*;
  *
  * <p>
  * The servlet is registered and mapped to /HelloServlet using the {@linkplain WebServlet
- * @HttpServlet}. The {@link HelloService} is injected by CDI.
+ * @HttpServlet}. The {@link} is injected by CDI.
  * </p>
  *
  */
@@ -49,13 +52,20 @@ public class indexJSPController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Logger logger = LoggerFactory.getLogger(indexJSPController.class);
+        String URL = "jdbc:mysql://localhost:3306/welcome_pool_Code_Review";
+        String USERNAME = "SVC_Java";
+        String PASSWORD = "1xqOOMTNMjnzZ76TPaRA";
+        MemberDAO m = new MemberDAO(URL,USERNAME,PASSWORD);
 
-        Member m = new Member("a","b","c");
+        List<Member> mems = null;
+        try {
+            mems = m.getAllMembers();
+            req.setAttribute("members", mems);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
-        List<Member> mems = new ArrayList<Member>();
-        mems.add(m);
-        logger.info(mems.get(0).getName());
-        req.setAttribute("members", mems);
+
         req.getRequestDispatcher("index.jsp").forward(req, resp);
 
     }
