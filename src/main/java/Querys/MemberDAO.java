@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 public class MemberDAO extends DAO<Member> {
 
+
     public MemberDAO(String url, String username, String password){
         super( url,  username,  password);
     }
@@ -27,6 +28,7 @@ public class MemberDAO extends DAO<Member> {
             member.setPromotion(rs.getString("class_name"));
 
             members.add(member);
+
         }
         return members;
     }
