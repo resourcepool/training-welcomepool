@@ -36,7 +36,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">When Is My Code Review?</a>
+                <a class="navbar-brand" href="index">When Is My Code Review?</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -46,11 +46,11 @@
                         <i class="fa fa-gear fa-fw"></i> Gérer les code reviews <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="add_promotion.html"><i class="fa fa-users fa-fw"></i> Ajouter une promotion</a>
+                        <li><a href="addProm"><i class="fa fa-users fa-fw"></i> Ajouter une promotion</a>
                         </li>
-                        <li><a href="add_member.html"><i class="fa fa-user fa-fw"></i> Ajouter un membre</a>
+                        <li><a href="addmem"><i class="fa fa-user fa-fw"></i> Ajouter un membre</a>
                         </li>
-                        <li><a href="add_event.html"><i class="fa fa-calendar fa-fw"></i> Créer un rendez-vous</a>
+                        <li><a href="addReview"><i class="fa fa-calendar fa-fw"></i> Créer un rendez-vous</a>
                         </li>
                     </ul>
                 </li>
