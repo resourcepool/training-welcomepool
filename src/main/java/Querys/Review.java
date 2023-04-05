@@ -2,21 +2,21 @@ package main.java.Querys;
 
 import java.sql.Date;
 
-public class Member {
+public class Review {
     private int id;
     private String name;
-    private String email;
-    private Date birthdate;
+    private String description;
+    private Date date;
     private String promotion;
     private int classId;
 
-    public Member() {}
+    public Review() {}
 
-    public Member(String name, String email, Date birthdate, int classId) {
+    public Review(String name, String description, Date date, String promotion) {
         this.name = name;
-        this.email = email;
-        this.birthdate = birthdate;
-        this.classId = classId;
+        this.description = description;
+        this.date = date;
+        this.promotion = promotion;
     }
 
     public int getId() {
@@ -35,20 +35,20 @@ public class Member {
         this.name = name;
     }
 
-    public String getEmail() {
-        return email;
+    public String getDescription() {
+        return description;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public Date getBirthdate() {
-        return birthdate;
+    public Date getDate() {
+        return date;
     }
 
-    public void setBirthdate(Date birthdate) {
-        this.birthdate = birthdate;
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     public int getClassId() {
@@ -59,11 +59,9 @@ public class Member {
         this.classId = classId;
     }
 
+    public String getPromotion(){return promotion;}
+
     public void setPromotion(String promotion) {
         this.promotion = promotion;
-    }
-
-    public String getPromotion() {
-        return promotion;
     }
 }

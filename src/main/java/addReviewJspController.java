@@ -15,6 +15,7 @@
  * limitations under the License.
  */
 package main.java;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -25,9 +26,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.SQLException;
-import java.util.*;
-import main.java.Querys.*;
 
 /**
  * <p>
@@ -41,8 +39,8 @@ import main.java.Querys.*;
  *
  */
 @SuppressWarnings("serial")
-@WebServlet("/index")
-public class indexJSPController extends HttpServlet {
+@WebServlet("/addReview")
+public class addReviewJspController extends HttpServlet {
 
     @Override
     public void init() {
@@ -51,23 +49,23 @@ public class indexJSPController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Logger logger = LoggerFactory.getLogger(indexJSPController.class);
-        String URL = "jdbc:mysql://localhost:3306/welcome_pool_Code_Review";
-        String USERNAME = "SVC_Java";
-        String PASSWORD = "1xqOOMTNMjnzZ76TPaRA";
-        MemberDAO m = new MemberDAO(URL, USERNAME, PASSWORD);
 
-        List<Member> mems = null;
-        try {
-            mems = m.getAll();
-            req.setAttribute("members", mems);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-
-
-        req.getRequestDispatcher("index.jsp").forward(req, resp);
-
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/add_review.jsp");
+        dispatcher.forward(req, resp);
     }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        Logger logger = LoggerFactory.getLogger(addMemberJspController.class);
+
+        if (request.getParameter("addReview") != null) {
+            logger.info("COUCOU");
+            logger.info(request.getParameter("name"));
+        }
+        response.sendRedirect("/Pool/index");
+        //request.getRequestDispatcher("/index").forward(request,response);
+        //request.getRequestDispatcher("/WEB-INF/some-result.jsp").forward(request, response);
+    }
+
 
 }
