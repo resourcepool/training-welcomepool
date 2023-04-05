@@ -6,6 +6,11 @@ import java.util.ArrayList;
 
 public class ReviewDAO extends DAO<Review> {
 
+    public ReviewDAO(String url, String username, String password){
+        super( url,  username,  password);
+    }
+
+
     public ArrayList<Review> getAll() throws SQLException {
         ArrayList<Review> reviews = new ArrayList<>();
         String sql = "SELECT * FROM code_reviews";

@@ -6,28 +6,29 @@ import java.util.ArrayList;
 
 public class MemberDAO extends DAO<Member> {
 
-    public MemberDAO(){}
+
+    public MemberDAO(String url, String username, String password){
+        super( url,  username,  password);
+    }
 
     public ArrayList<Member> getAll() throws SQLException {
         ArrayList<Member> members = new ArrayList<>();
-        String sql = "SELECT * FROM members";
-        try (Connection conn = getConnection();
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery(sql)) {
-            while (rs.next()) {
-                Member member = new Member();
-                member.setId(rs.getInt("id"));
-                member.setName(rs.getString("name"));
-                member.setEmail(rs.getString("email"));
-                member.setBirthdate(rs.getDate("birthdate"));
-                member.setClassId(rs.getInt("class_id"));
-                sql = "SELECT name FROM class WHERE class_id="+member.getClassId();
-                try (Statement stmt2 = conn.createStatement();
-                     ResultSet result = stmt2.executeQuery(sql);) {
-                    if (result.next()) member.setPromotion(result.getString("name"));
-                }
-                members.add(member);
-            }
+        Connection conn = getConnection();
+        String sql = "SELECT m.id, m.name, email, birthdate, class_id, c.name as class_name FROM members as m INNER JOIN classes as c ON m.class_id = c.id";
+
+        PreparedStatement stmt = conn.prepareStatement(sql);
+        ResultSet rs = stmt.executeQuery();
+        while (rs.next()) {
+            Member member = new Member();
+            member.setId(rs.getInt("m.id"));
+            member.setName(rs.getString("m.name"));
+            member.setEmail(rs.getString("email"));
+            member.setBirthdate(rs.getDate("birthdate"));
+            member.setClassId(rs.getInt("class_id"));
+            member.setPromotion(rs.getString("class_name"));
+
+            members.add(member);
+
         }
         return members;
     }

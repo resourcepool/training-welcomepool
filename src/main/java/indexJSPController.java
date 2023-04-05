@@ -55,11 +55,11 @@ public class indexJSPController extends HttpServlet {
         String URL = "jdbc:mysql://localhost:3306/welcome_pool_Code_Review";
         String USERNAME = "SVC_Java";
         String PASSWORD = "1xqOOMTNMjnzZ76TPaRA";
-        MemberDAO m = new MemberDAO(URL,USERNAME,PASSWORD);
+        MemberDAO m = new MemberDAO(URL, USERNAME, PASSWORD);
 
         List<Member> mems = null;
         try {
-            mems = m.getAllMembers();
+            mems = m.getAll();
             req.setAttribute("members", mems);
         } catch (SQLException e) {
             throw new RuntimeException(e);

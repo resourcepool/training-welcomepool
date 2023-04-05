@@ -58,6 +58,7 @@ public class addMemberJspController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
         List<String> classes = new ArrayList<>();
         classes.add("Fevrier");
         classes.add("Mars");
@@ -93,10 +94,10 @@ public class addMemberJspController extends HttpServlet {
             String URL = "jdbc:mysql://localhost:3306/welcome_pool_Code_Review";
             String USERNAME = "SVC_Java";
             String PASSWORD = "1xqOOMTNMjnzZ76TPaRA";
-            MemberDAO mDAO = new MemberDAO(URL,USERNAME,PASSWORD);
+            MemberDAO mDAO = new MemberDAO(URL, USERNAME, PASSWORD);
 
             try {
-                mDAO.addMember(new Member(name,email,birthdate,1));
+                mDAO.add(new Member(name,email,birthdate,1));
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
