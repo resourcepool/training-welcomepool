@@ -164,7 +164,7 @@
                                                     <tr>
                                                         <td><c:out value="${member.name}"/></td>
                                                         <td><c:out value="${member.email}"/> </td>
-                                                        <td><c:out value="${member.promotion}"/> </td>
+                                                        <td><c:out value="${member.classId}"/> </td>
                                                         <td class="text-right">
                                                         <a href="#" class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i> Modifier</a>
                                                         <a href="#" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> Supprimer</a>
