@@ -35,7 +35,7 @@ public class MemberDAO extends DAO<Member> {
 
     public int add(Member member) throws SQLException {
         int memberId = 0;
-        String getId;
+        //String getId;
         String sql = " insert into members (name,email,birthdate,class_id)"
                 + " values ('" + member.getName() + "', '" + member.getEmail() + "', '" + member.getBirthdate() + "', '" + member.getClassId() + "')";
         try (Connection conn = getConnection();
