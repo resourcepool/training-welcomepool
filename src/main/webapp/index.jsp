@@ -162,13 +162,18 @@
                                             <tbody id="memberBody">
                                                <c:forEach items="${members}" var="member">
                                                     <tr>
-                                                        <td><c:out value="${member.name}"/></td>
-                                                        <td><c:out value="${member.email}"/> </td>
-                                                        <td><c:out value="${member.promotion}"/> </td>
-                                                        <td class="text-right">
-                                                        <a href="#" class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i> Modifier</a>
-                                                        <a href="#" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> Supprimer</a>
-                                                        </td>
+                                                        <form method="post" action="${pageContext.request.contextPath}/addmem">
+                                                            <td><c:out value="${member.name}"/></td>
+                                                            <input type="hidden" value="${member.email}" name="email">
+                                                            <input type="hidden" value="${member.id}" name="id">
+                                                            <input type="hidden" value="${member.name}" name="name">
+                                                            <td><c:out value="${member.email}"/> </td>
+                                                            <td><c:out value="${member.promotion}"/> </td>
+                                                            <td class="text-right">
+                                                            <button name="modifMem" type="submit" class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i> Modifier</button>
+                                                            <a href="#" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> Supprimer</a>
+                                                            </td>
+                                                        </form>
                                                    </tr>
                                                </c:forEach>
                                             </tbody>
@@ -208,7 +213,7 @@
                                     <td class="text-right"><span class="text-muted small">10/03/2017</span></td>
                                 </tr>
                             </table>
-                            <a href="#" class="btn btn-default btn-block">Programmer une code review</a>
+                            <a href="addReview" class="btn btn-default btn-block">Programmer une code review</a>
                         </div>
                         <!-- /.panel-body -->
                     </div>
@@ -238,7 +243,7 @@
                                 </a>
                             </div>
                             <!-- /.list-group -->
-                            <a href="#" class="btn btn-default btn-block">Créer une nouvelle promotion</a>
+                            <a href="addProm" class="btn btn-default btn-block">Créer une nouvelle promotion</a>
                         </div>
                         <!-- /.panel-body -->
                     </div>

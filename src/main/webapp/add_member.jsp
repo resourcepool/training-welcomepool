@@ -73,13 +73,26 @@
                             <div class="row">
                                 <div class="col-xs-12">
                                     <form action="${pageContext.request.contextPath}/addmem" method="post" class="">
-                                        <div class="form-group">
-                                            <label for="name">Nom</label>
-                                            <input type="text" class="input-lg form-control" id="name" name="name" placeholder="Nom">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="email">Adresse Email</label>
-                                            <input type="email" class="input-lg form-control"  name="email" id="email" placeholder="Adresse Email">
+                                        <c:choose>
+                                        <c:when test="${email!=null}">
+                                            <div class="form-group">
+                                                <label for="name">Nom</label>
+                                                <input type="text" class="input-lg form-control"  value="${name}" name="name"  placeholder="Nom">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="email">Adresse Email</label>
+                                                <input type="email" class="input-lg form-control" value="${email}" name="email" id="email" placeholder="Adresse Email">
+                                                </c:when>
+                                                <c:otherwise>
+                                                <div class="form-group">
+                                                    <label for="name">Nom</label>
+                                                    <input type="text" class="input-lg form-control" id="name"  name="name" placeholder="Nom">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="email">Adresse Email</label>
+                                                    <input type="email" class="input-lg form-control"  name="email" id="email" placeholder="Adresse Email">
+                                                </c:otherwise>
+                                            </c:choose>
                                         </div>
                                         <div class="form-group">
                                             <label for="promotion">Promotion</label>
@@ -90,9 +103,18 @@
                                             </select>
                                         </div>
 
-                                        <div class="text-right">
-                                            <button type="submit" name="addMem" class="btn btn-lg btn-primary">Enregistrer</button>
-                                        </div>
+                                        <c:choose>
+                                                <c:when test="${email!=null}">
+                                                    <div class="text-right">
+                                                        <button type="submit" name="updateMem" class="btn btn-lg btn-primary">Enregistrer</button>
+                                                    </div>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <div class="text-right">
+                                                        <button type="submit" name="addMem" class="btn btn-lg btn-primary">Enregistrer</button>
+                                                    </div>
+                                                </c:otherwise>
+                                                </c:choose>
                                     </form>
                                 </div>
                             </div>
