@@ -12,6 +12,7 @@ public class PromotionDAO extends DAO<Promotion> {
     }
 
     public ArrayList<Promotion> getAll() throws SQLException {
+        MemberDAO mDAO = new MemberDAO(url, username, password);
         ArrayList<Promotion> promotions = new ArrayList<>();
         Connection conn = getConnection();
         String sql = "SELECT id, name FROM classes";
@@ -20,9 +21,10 @@ public class PromotionDAO extends DAO<Promotion> {
         ResultSet rs = stmt.executeQuery();
         while (rs.next()) {
             Promotion promotion = new Promotion();
-            promotion.setId(rs.getInt("id"));
+            int id = rs.getInt("id");
+            promotion.setId(id);
             promotion.setName(rs.getString("name"));
-
+            promotion.setNbMembres(mDAO.countByPromotion(id));
             promotions.add(promotion);
 
         }

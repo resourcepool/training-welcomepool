@@ -21,6 +21,7 @@ public class ReviewDAO extends DAO<Review> {
                 Review review = new Review();
                 review.setId(rs.getInt("r.id"));
                 review.setName(rs.getString("r.name"));
+
                 review.setDescription(rs.getString("description"));
                 review.setDate(rs.getDate("datetime"));
                 review.setPromotion(rs.getString("c.name"));

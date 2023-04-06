@@ -69,6 +69,7 @@ public class indexJSPController extends HttpServlet {
             throw new RuntimeException(e);
         }
 
+
         req.setAttribute("revSize",reviews.size());
         req.setAttribute("memSize",mems.size());
         req.setAttribute("promSize",prom.size());
@@ -90,7 +91,9 @@ public class indexJSPController extends HttpServlet {
 
         req.setAttribute("sh_reviews",short_reviews);
         req.setAttribute("sh_promo",short_proms);
+
         req.setAttribute("members", mems);
+
 
         req.getRequestDispatcher("index.jsp").forward(req, resp);
 

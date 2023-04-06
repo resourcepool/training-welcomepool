@@ -60,6 +60,19 @@ public class MemberDAO extends DAO<Member> {
         return memberId;
     }
 
+    public int countByPromotion(int id) throws SQLException {
+
+        String sql = "SELECT COUNT(class_id) FROM members WHERE class_id="+id;
+        try (Connection conn = getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+            ResultSet rs = stmt.executeQuery();
+            if(rs.next()) {
+                return rs.getInt(1);
+            }
+        }
+        return 0;
+    }
+
     // Méthode pour supprimer un membre de la table "members" par son id
     public int deleteById(int id) throws SQLException {
         String sql = "DELETE FROM members WHERE id=?";
