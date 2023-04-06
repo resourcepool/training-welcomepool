@@ -13,17 +13,18 @@ public class ReviewDAO extends DAO<Review> {
 
     public ArrayList<Review> getAll() throws SQLException {
         ArrayList<Review> reviews = new ArrayList<>();
-        String sql = "SELECT * FROM code_reviews";
+        String sql = "SELECT r.id, r.name, description, datetime, c.name FROM code_reviews as r INNER JOIN classes as c on r.class_id = c.id;";
         try (Connection conn = getConnection();
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
                 Review review = new Review();
-                review.setId(rs.getInt("id"));
-                review.setName(rs.getString("name"));
+                review.setId(rs.getInt("r.id"));
+                review.setName(rs.getString("r.name"));
+
                 review.setDescription(rs.getString("description"));
                 review.setDate(rs.getDate("datetime"));
-                review.setClassId(rs.getInt("class_id"));
+                review.setPromotion(rs.getString("c.name"));
                 reviews.add(review);
             }
         }

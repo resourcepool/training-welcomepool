@@ -66,4 +66,17 @@ public class PromotionDAO extends DAO<Promotion> {
         }
         return rowsDeleted;
     }
+
+    public int update(Promotion promotion) throws SQLException {
+        System.out.println("Update");
+        String sql = "UPDATE classes SET name=? WHERE id=?";
+        int rowsUpdated;
+        try (Connection conn = getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, promotion.getName());
+            stmt.setInt(2, promotion.getId());
+            rowsUpdated = stmt.executeUpdate();
+        }
+        return rowsUpdated;
+    }
 }

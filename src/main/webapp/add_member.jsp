@@ -60,7 +60,15 @@
         <div id="page-wrapper" class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
+<c:choose>
+                                <c:when test="${email!=null}">
+                    <h1 class="page-header">Modifier un membre</h1>
+                                </c:when>
+                                    <c:otherwise>
                     <h1 class="page-header">Ajouter un membre</h1>
+                                    </c:otherwise>
+                                </c:choose>
+
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
