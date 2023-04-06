@@ -79,7 +79,7 @@
                                 </div>
                                 <div class="col-xs-9 text-right">
 
-                                    <div class="huge"><!--<c:out value="${promSize}"/>--></div>
+                                    <div class="huge"><c:out value="${promSize}"/></div>
                                     <div class="huge-label">Promotions</div>
                                 </div>
                             </div>

@@ -19,7 +19,7 @@ public class ReviewDAO extends DAO<Review> {
              ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
                 Review review = new Review();
-                review.setId(rs.getInt("idcode_review_schedule"));
+                review.setId(rs.getInt("id"));
                 review.setName(rs.getString("name"));
                 review.setDescription(rs.getString("description"));
                 review.setDate(rs.getDate("datetime"));
