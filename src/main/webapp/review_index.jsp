@@ -78,8 +78,7 @@
                                     <i class="fa fa-users fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-
-                                    <div class="huge"><!--<c:out value="${promSize}"/>--></div>
+                                    <div class="huge">4</div>
                                     <div class="huge-label">Promotions</div>
                                 </div>
                             </div>
@@ -101,7 +100,7 @@
                                     <i class="fa fa-user fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge"><c:out value="${memSize}"/></div>
+                                    <div class="huge">46</div>
                                     <div class="huge-label">Membres inscrits</div>
                                 </div>
                             </div>
@@ -123,7 +122,7 @@
                                     <i class="fa fa-calendar fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge"><c:out value="${memSize}"/></div>
+                                    <div class="huge">3</div>
                                     <div class="huge-label">Code reviews programmées</div>
                                 </div>
                             </div>
@@ -144,7 +143,7 @@
                     <!-- /.panel -->
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <i class="fa fa-user fa-fw"></i> Gestion des membres
+                            <i class="fa fa-user fa-fw"></i> Gestion des Code Reviews
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -154,25 +153,26 @@
                                         <table id="dtMembers" lass="table table-hover table-striped">
                                             <thead>
                                                 <tr>
+                                                    <th>Date</th>
                                                     <th>Nom</th>
-                                                    <th>Email</th>
-                                                    <th>Promotion</th>
+                                                    <th>Description</th>
                                                     <th>Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody id="memberBody">
-                                               <c:forEach items="${members}" var="member">
+                                               <c:forEach items="${review}" var="review">
                                                     <tr>
-                                                        <form method="post" action="${pageContext.request.contextPath}/addmem">
-                                                            <td><c:out value="${member.name}"/></td>
-                                                            <input type="hidden" value="${member.email}" name="email">
-                                                            <input type="hidden" value="${member.id}" name="id">
-                                                            <input type="hidden" value="${member.name}" name="name">
-                                                            <td><c:out value="${member.email}"/> </td>
-                                                            <td><c:out value="${member.promotion}"/> </td>
+                                                        <form method="post" action="${pageContext.request.contextPath}/addReview">
+                                                            <td><c:out value="${review.date}"/></td>
+                                                            <input type="hidden" value="${review.date}" name="email">
+                                                            <input type="hidden" value="${review.id}" name="id">
+                                                            <input type="hidden" value="${review.name}" name="name">
+                                                            <input type="hidden" value="${review.description}" name="name">
+                                                            <td><c:out value="${review.name}"/> </td>
+                                                            <td><c:out value="${review.description}"/> </td>
                                                             <td>
-                                                            <button name="modifMem" type="submit" class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i> Modifier</button>
-                                                            <button name="deleteMem" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> Supprimer</a>
+                                                            <button name="modifRev" type="submit" class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i> Modifier</button>
+                                                            <button name="deleteRev" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> Supprimer</a>
                                                             </td>
                                                         </form>
                                                    </tr>

@@ -40,8 +40,8 @@ import main.java.Querys.*;
  *
  */
 @SuppressWarnings("serial")
-@WebServlet("/index")
-public class indexJSPController extends HttpServlet {
+@WebServlet("/indexReview")
+public class reviewIndexJSPController extends HttpServlet {
 
     @Override
     public void init() {
@@ -54,26 +54,17 @@ public class indexJSPController extends HttpServlet {
         String URL = "jdbc:mysql://localhost:3306/welcome_pool_Code_Review";
         String USERNAME = "SVC_Java";
         String PASSWORD = "1xqOOMTNMjnzZ76TPaRA";
-        MemberDAO m = new MemberDAO(URL, USERNAME, PASSWORD);
-        ReviewDAO rev = new ReviewDAO(URL,USERNAME,PASSWORD);
-        //PromotionDAO pro = new PromotionDAO(URL,USERNAME,PASSWORD);
-        List<Member> mems = new ArrayList<>();
-        List<Review> reviews = new ArrayList<>();
-        //List<Promotion> prom = new ArrayList<>();
-        /*try {
-            prom = pro.getAll();
-            reviews = rev.getAll();
-            mems = m.getAll();
+        ReviewDAO r = new ReviewDAO(URL, USERNAME, PASSWORD);
+
+        List<Review> rev = new ArrayList<>();
+        try {
+            rev = r.getAll();
         } catch (SQLException e) {
             throw new RuntimeException(e);
-        }*/
-        req.setAttribute("revSize",reviews.size());
-        req.setAttribute("memSize",mems.size());
-        //req.setAttribute("promSize",prom.size());
-        req.setAttribute("members", mems);
+        }
+        req.setAttribute("review", rev);
 
-        req.getRequestDispatcher("index.jsp").forward(req, resp);
-
+        req.getRequestDispatcher("review_index.jsp").forward(req, resp);
 
     }
 }
