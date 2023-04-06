@@ -126,6 +126,7 @@ public class addMemberJspController extends HttpServlet {
             System.out.println("addMem");
             String dateInString = "1995-05-02";
             java.util.Date utilbirthdate = new java.util.Date();
+
             try {
                 utilbirthdate = formatter.parse(dateInString);
             } catch (ParseException e) {
@@ -150,7 +151,8 @@ public class addMemberJspController extends HttpServlet {
             String email = request.getParameter("email");
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.FRANCE);
             System.out.println("addMem");
-            String dateInString = "1995-05-02";
+            //String dateInString = "1995-05-02";
+            String dateInString = request.getParameter("date");
             java.util.Date utilbirthdate = new java.util.Date();
             try {
                 utilbirthdate = formatter.parse(dateInString);

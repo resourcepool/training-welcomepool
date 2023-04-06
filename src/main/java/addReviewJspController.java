@@ -29,7 +29,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -82,18 +86,21 @@ public class addReviewJspController extends HttpServlet {
         if (request.getParameter("addReview") != null) {
             String name = request.getParameter("name");
             int c_id = Integer.parseInt(request.getParameter("classes_selected"));
+            String d = request.getParameter("date");
+            System.out.println("DATE : " + d);
 
             String description = request.getParameter("description");
 
-            Date date = new Date(1222222);
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
 
-            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.FRANCE);
+            java.time.LocalDateTime dt = LocalDateTime.parse(d, formatter);
 
+            Timestamp ts = Timestamp.valueOf(dt);
 
             ReviewDAO rDAO = new ReviewDAO(URL, USERNAME, PASSWORD);
 
             try {
-                Review r = new Review(name,description,date);
+                Review r = new Review(name,description,ts);
                 r.setClassId(c_id);
                 System.out.println(c_id);
                 rDAO.add(r);

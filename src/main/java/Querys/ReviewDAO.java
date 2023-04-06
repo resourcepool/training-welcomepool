@@ -23,7 +23,7 @@ public class ReviewDAO extends DAO<Review> {
                 review.setName(rs.getString("r.name"));
 
                 review.setDescription(rs.getString("description"));
-                review.setDate(rs.getDate("datetime"));
+                review.setDate(rs.getTimestamp("datetime"));
                 review.setPromotion(rs.getString("c.name"));
                 reviews.add(review);
             }
@@ -38,7 +38,7 @@ public class ReviewDAO extends DAO<Review> {
              PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);) {
             stmt.setString(1, review.getName());
             stmt.setString(2, review.getDescription());
-            stmt.setDate(3, review.getDate());
+            stmt.setTimestamp(3, review.getDate());
             stmt.setInt(4,review.getClassId());
             stmt.executeUpdate();
         }
