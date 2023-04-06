@@ -24,7 +24,7 @@ public class MemberDAOTest {
     @Before
     public void setUp() throws Exception {
         // Initialisation de l'objet MemberDAO avec les paramètres de connexion pour les tests
-        memberDAO = new MemberDAO(URL, USERNAME, PASSWORD);
+        memberDAO = new MemberDAO(URL,USERNAME,PASSWORD);
     }
 
     @After
@@ -37,7 +37,7 @@ public class MemberDAOTest {
     public void testGetAllMembers() {
         try {
             // Appel de la méthode getAllMembers() pour récupérer tous les membres de la table "members"
-            ArrayList<Member> members = memberDAO.getAllMembers();
+            ArrayList<Member> members = memberDAO.getAll();
 
             // Vérification que la liste des membres n'est pas vide
             assertFalse(members.isEmpty());
