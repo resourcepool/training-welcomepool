@@ -71,8 +71,12 @@ public class indexJSPController extends HttpServlet {
         }
         req.setAttribute("revSize",reviews.size());
         req.setAttribute("memSize",mems.size());
-        //req.setAttribute("promSize",prom.size());
+        req.setAttribute("promSize",prom.size());
         req.setAttribute("members", mems);
+
+        for(Promotion p : prom) {
+            System.out.println(p.getName() + " " + p.getNbMembres());
+        }
 
         req.getRequestDispatcher("index.jsp").forward(req, resp);
 

@@ -11,6 +11,8 @@ public class Promotion {
 
     private String name;
 
+    private int nbMembres;
+
     public void setId(int id) {
         this.id = id;
     }
@@ -25,6 +27,12 @@ public class Promotion {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getNbMembres(){return nbMembres;}
+
+    public void setNbMembres(int x) {
+        nbMembres = x;
     }
 }
 
