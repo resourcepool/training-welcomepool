@@ -56,7 +56,7 @@ public class addReviewJspController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Logger logger = LoggerFactory.getLogger(addMemberJspController.class);
+        Logger logger = LoggerFactory.getLogger(addReviewJspController.class);
 
         if (request.getParameter("addReview") != null) {
             logger.info("COUCOU");

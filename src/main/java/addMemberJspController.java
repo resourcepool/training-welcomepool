@@ -63,23 +63,23 @@ public class addMemberJspController extends HttpServlet {
         classes.add("Fevrier");
         classes.add("Mars");
         req.setAttribute("classes", classes);
-
         RequestDispatcher dispatcher = req.getRequestDispatcher("/add_member.jsp");
         dispatcher.forward(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Logger logger = LoggerFactory.getLogger(addMemberJspController.class);
+
+        String URL = "jdbc:mysql://localhost:3306/welcome_pool_Code_Review";
+        String USERNAME = "SVC_Java";
+        String PASSWORD = "1xqOOMTNMjnzZ76TPaRA";
+        MemberDAO mDAO = new MemberDAO(URL, USERNAME, PASSWORD);
 
         if (request.getParameter("addMem") != null) {
-            logger.info("COUCOU");
-            logger.info(request.getParameter("name"));
-
             String name = request.getParameter("name");
             String email = request.getParameter("email");
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.FRANCE);
-
+            System.out.println("addMem");
             String dateInString = "1995-05-02";
             java.util.Date utilbirthdate = new java.util.Date();
             try {
@@ -91,18 +91,64 @@ public class addMemberJspController extends HttpServlet {
 
             String c_selected = request.getParameter("classes_selected");
 
-            String URL = "jdbc:mysql://localhost:3306/welcome_pool_Code_Review";
-            String USERNAME = "SVC_Java";
-            String PASSWORD = "1xqOOMTNMjnzZ76TPaRA";
-            MemberDAO mDAO = new MemberDAO(URL, USERNAME, PASSWORD);
-
             try {
+                System.out.println("REMI n'A RAISON");
                 mDAO.add(new Member(name,email,birthdate,1));
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
+            response.sendRedirect("/Pool/index");
         }
-        response.sendRedirect("/Pool/index");
+        else if(request.getParameter("modifMem")!=null){
+            List<String> classes = new ArrayList<>();
+            classes.add("Fevrier");
+            classes.add("Mars");
+            request.setAttribute("classes", classes);
+            String name = request.getParameter("name");
+            String email = request.getParameter("email");
+            int id = Integer.parseInt(request.getParameter("id"));
+            request.setAttribute("email",email);
+            request.setAttribute("name",name);
+            request.setAttribute("id",id);
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.FRANCE);
+            System.out.println("addMem");
+            String dateInString = "1995-05-02";
+            java.util.Date utilbirthdate = new java.util.Date();
+            try {
+                utilbirthdate = formatter.parse(dateInString);
+            } catch (ParseException e) {
+                throw new RuntimeException(e);
+            }
+            System.out.println("modifmem");
+
+            java.sql.Date birthdate = new java.sql.Date(utilbirthdate.getTime());
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/add_member.jsp");
+            dispatcher.forward(request, response);
+        }
+        else if (request.getParameter("updateMem") != null) {
+            String name = request.getParameter("name");
+            String email = request.getParameter("email");
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.FRANCE);
+            System.out.println("addMem");
+            String dateInString = "1995-05-02";
+            java.util.Date utilbirthdate = new java.util.Date();
+            try {
+                utilbirthdate = formatter.parse(dateInString);
+            } catch (ParseException e) {
+                throw new RuntimeException(e);
+            }
+            java.sql.Date birthdate = new java.sql.Date(utilbirthdate.getTime());
+            String c_selected = request.getParameter("classes_selected");
+
+            try {
+                System.out.println("gdhs");
+                mDAO.add(new Member(name,email,birthdate,1));
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+            response.sendRedirect("/Pool/index");
+        }
+
         //request.getRequestDispatcher("/index").forward(request,response);
         //request.getRequestDispatcher("/WEB-INF/some-result.jsp").forward(request, response);
     }
