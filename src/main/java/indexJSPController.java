@@ -68,5 +68,9 @@ public class indexJSPController extends HttpServlet {
 
         req.getRequestDispatcher("index.jsp").forward(req, resp);
 
+        if (req.getParameter("deleteMem") != null) {
+            System.out.println("DELETE");
+        }
+
     }
 }

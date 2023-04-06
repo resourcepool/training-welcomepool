@@ -171,7 +171,7 @@
                                                             <td><c:out value="${member.promotion}"/> </td>
                                                             <td class="text-right">
                                                             <button name="modifMem" type="submit" class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i> Modifier</button>
-                                                            <a href="#" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> Supprimer</a>
+                                                            <button name="deleteMem" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> Supprimer</a>
                                                             </td>
                                                         </form>
                                                    </tr>
