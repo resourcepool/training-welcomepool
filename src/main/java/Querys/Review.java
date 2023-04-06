@@ -1,18 +1,19 @@
 package main.java.Querys;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 public class Review {
     private int id;
     private String name;
     private String description;
-    private Date date;
+    private Timestamp date;
     private String promotion;
     private int classId;
 
     public Review() {}
 
-    public Review(String name, String description, Date date) {
+    public Review(String name, String description, Timestamp date) {
         this.name = name;
         this.description = description;
         this.date = date;
@@ -42,11 +43,11 @@ public class Review {
         this.description = description;
     }
 
-    public Date getDate() {
+    public Timestamp getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(Timestamp date) {
         this.date = date;
     }
 
