@@ -150,6 +150,19 @@ public class addMemberJspController extends HttpServlet {
             }
             response.sendRedirect("/Pool/index");
         }
+        else if (request.getParameter("deleteMem") != null) {
+            System.out.println("DELETE");
+            int id = Integer.parseInt(request.getParameter("id"));
+
+            System.out.println(id);
+
+            try {
+                mDAO.deleteById(id);
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+            response.sendRedirect("/Pool/index");
+        }
 
         //request.getRequestDispatcher("/index").forward(request,response);
         //request.getRequestDispatcher("/WEB-INF/some-result.jsp").forward(request, response);
