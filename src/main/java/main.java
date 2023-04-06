@@ -1,8 +1,9 @@
+package main.java;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-import static org.junit.Assert.*;
+//import static org.junit.Assert.*;
 
 public class main {
     
@@ -10,10 +11,10 @@ public class main {
         Connection conn = null;
         try {
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/welcome_pool", "anthony", "1234");
-            assertTrue(conn != null);
+           // assertTrue(conn != null);
 
-            classes c = new classes("Test00");
-            c.insert_classes(conn);
+            //classes c = new classes("Test00");
+            //c.insert_classes(conn);
             
             //c.delete_classes(conn);
 
