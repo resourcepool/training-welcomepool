@@ -208,7 +208,7 @@
                                     <td class="text-right"><span class="text-muted small">10/03/2017</span></td>
                                 </tr>
                             </table>
-                            <a href="#" class="btn btn-default btn-block">Programmer une code review</a>
+                            <a href="addReview" class="btn btn-default btn-block">Programmer une code review</a>
                         </div>
                         <!-- /.panel-body -->
                     </div>
@@ -238,7 +238,7 @@
                                 </a>
                             </div>
                             <!-- /.list-group -->
-                            <a href="#" class="btn btn-default btn-block">Créer une nouvelle promotion</a>
+                            <a href="addProm" class="btn btn-default btn-block">Créer une nouvelle promotion</a>
                         </div>
                         <!-- /.panel-body -->
                     </div>
