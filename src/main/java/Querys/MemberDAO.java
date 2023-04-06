@@ -7,8 +7,8 @@ import java.util.ArrayList;
 public class MemberDAO extends DAO<Member> {
 
 
-    public MemberDAO(String url, String username, String password){
-        super( url,  username,  password);
+    public MemberDAO(String url, String username, String password) {
+        super(url, username, password);
     }
 
     public ArrayList<Member> getAll() throws SQLException {
@@ -37,7 +37,7 @@ public class MemberDAO extends DAO<Member> {
         int memberId = 0;
         String getId;
         String sql = " insert into members (name,email,birthdate,class_id)"
-                + " values ('"+ member.getName() +"', '"+ member.getEmail() +"', '"+ member.getBirthdate() +"', '"+ member.getClassId()+"')";
+                + " values ('" + member.getName() + "', '" + member.getEmail() + "', '" + member.getBirthdate() + "', '" + member.getClassId() + "')";
         try (Connection conn = getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             stmt.executeUpdate();
@@ -60,5 +60,20 @@ public class MemberDAO extends DAO<Member> {
             rowsDeleted = stmt.executeUpdate();
         }
         return rowsDeleted;
+    }
+
+    public int update(Member member) throws SQLException {
+        String sql = "UPDATE members SET name=?, email=?, birthdate=?, class_id=? WHERE id=?";
+        int rowsUpdated;
+        try (Connection conn = getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, member.getName());
+            stmt.setString(2, member.getEmail());
+            stmt.setDate(3, member.getBirthdate());
+            stmt.setInt(4, member.getClassId());
+            stmt.setInt(5, member.getId());
+            rowsUpdated = stmt.executeUpdate();
+        }
+        return rowsUpdated;
     }
 }

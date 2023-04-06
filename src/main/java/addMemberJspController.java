@@ -139,10 +139,10 @@ public class addMemberJspController extends HttpServlet {
             }
             java.sql.Date birthdate = new java.sql.Date(utilbirthdate.getTime());
             String c_selected = request.getParameter("classes_selected");
-
+            int id = Integer.parseInt(request.getParameter("id"));
             try {
                 System.out.println("gdhs");
-                mDAO.add(new Member(name,email,birthdate,1));
+                mDAO.update(new Member(name,email,birthdate,id));
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
