@@ -65,17 +65,13 @@ public class addMemberJspController extends HttpServlet {
         String PASSWORD = "1xqOOMTNMjnzZ76TPaRA";
         PromotionDAO dao = new PromotionDAO(URL, USERNAME, PASSWORD);
         List<String> promotionsNames = new ArrayList<>();
-
+        List<Promotion> classes = new ArrayList<>();
         try {
-            List<Promotion> classes = dao.getAll();
-            for(Promotion p: classes) {
-                System.out.println(p.getName());
-                promotionsNames.add(p.getName());
-            }
+            classes = dao.getAll();
         } catch (Exception e){
             System.out.println(e);
         }
-        req.setAttribute("classes", promotionsNames);
+        req.setAttribute("classes", classes);
 
         RequestDispatcher dispatcher = req.getRequestDispatcher("/add_member.jsp");
         dispatcher.forward(req, resp);
@@ -88,6 +84,7 @@ public class addMemberJspController extends HttpServlet {
         String USERNAME = "SVC_Java";
         String PASSWORD = "1xqOOMTNMjnzZ76TPaRA";
         MemberDAO mDAO = new MemberDAO(URL, USERNAME, PASSWORD);
+        PromotionDAO dao = new PromotionDAO(URL, USERNAME, PASSWORD);
 
         if (request.getParameter("addMem") != null) {
 
@@ -104,11 +101,11 @@ public class addMemberJspController extends HttpServlet {
             }
             java.sql.Date birthdate = new java.sql.Date(utilbirthdate.getTime());
 
-            String c_selected = request.getParameter("classes_selected");
+            int c_id = Integer.parseInt(request.getParameter("classes_selected"));
 
             try {
                 System.out.println("REMI n'A RAISON");
-                mDAO.add(new Member(name,email,birthdate,1));
+                mDAO.add(new Member(name,email,birthdate,c_id));
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
@@ -136,6 +133,14 @@ public class addMemberJspController extends HttpServlet {
             }
             System.out.println("modifmem");
 
+            List<Promotion> c = new ArrayList<>();
+            try {
+                c = dao.getAll();
+            } catch (Exception e){
+                System.out.println(e);
+            }
+            request.setAttribute("classes", c);
+
             java.sql.Date birthdate = new java.sql.Date(utilbirthdate.getTime());
             RequestDispatcher dispatcher = request.getRequestDispatcher("/add_member.jsp");
             dispatcher.forward(request, response);
@@ -153,11 +158,12 @@ public class addMemberJspController extends HttpServlet {
                 throw new RuntimeException(e);
             }
             java.sql.Date birthdate = new java.sql.Date(utilbirthdate.getTime());
-            String c_selected = request.getParameter("classes_selected");
+
+            int c_id = Integer.parseInt(request.getParameter("classes_selected"));
             int id = Integer.parseInt(request.getParameter("id"));
             try {
                 System.out.println("gdhs");
-                Member m = new Member(name,email,birthdate,1);
+                Member m = new Member(name,email,birthdate,c_id);
                 m.setId(id);
                 mDAO.update(m);
             } catch (SQLException e) {

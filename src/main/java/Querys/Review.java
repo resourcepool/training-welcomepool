@@ -12,11 +12,10 @@ public class Review {
 
     public Review() {}
 
-    public Review(String name, String description, Date date, String promotion) {
+    public Review(String name, String description, Date date) {
         this.name = name;
         this.description = description;
         this.date = date;
-        this.promotion = promotion;
     }
 
     public int getId() {
