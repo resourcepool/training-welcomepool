@@ -58,17 +58,17 @@ public class indexJSPController extends HttpServlet {
         String PASSWORD = "1xqOOMTNMjnzZ76TPaRA";
         MemberDAO m = new MemberDAO(URL, USERNAME, PASSWORD);
         ReviewDAO rev = new ReviewDAO(URL,USERNAME,PASSWORD);
-        //PromotionDAO pro = new PromotionDAO(URL,USERNAME,PASSWORD);
+        PromotionDAO pro = new PromotionDAO(URL,USERNAME,PASSWORD);
         List<Member> mems = new ArrayList<>();
         List<Review> reviews = new ArrayList<>();
-        //List<Promotion> prom = new ArrayList<>();
-        /*try {
+        List<Promotion> prom = new ArrayList<>();
+        try {
             prom = pro.getAll();
             reviews = rev.getAll();
             mems = m.getAll();
         } catch (SQLException e) {
             throw new RuntimeException(e);
-        }*/
+        }
         req.setAttribute("revSize",reviews.size());
         req.setAttribute("memSize",mems.size());
         //req.setAttribute("promSize",prom.size());
