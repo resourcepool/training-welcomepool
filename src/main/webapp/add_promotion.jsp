@@ -59,7 +59,14 @@
     <div id="page-wrapper" class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Créer une promotion</h1>
+            <c:choose>
+                <c:when test="${name!=null}">
+                    <h1 class="page-header">Modifier une promotion</h1>
+                </c:when>
+                    <c:otherwise>
+                    <h1 class="page-header">Créer une promotion</h1>
+                    </c:otherwise>
+                </c:choose>
             </div>
             <!-- /.col-lg-12 -->
         </div>
@@ -71,16 +78,33 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-xs-12">
-                                <form action="${pageContext.request.contextPath}/addProm" method="post" class="">
-                                    <div class="form-group">
-                                        <label for="name">Nom de la promotion</label>
-                                        <input type="text" class="input-lg form-control" id="name" name="name" placeholder="Nom">
-                                    </div>
+                            <c:choose>
+                                <c:when test="${name!=null}">
+                                    <form action="${pageContext.request.contextPath}/addProm" method="post" class="">
+                                        <div class="form-group">
+                                            <label for="name">Nom de la promotion</label>
+                                            <input type="hidden" value="${id}" name="id">
+                                            <input type="text" class="input-lg form-control" id="name" value="${name}" name="name" placeholder="Nom">
+                                        </div>
 
-                                    <div class="text-right">
-                                        <button type="submit" name="addProm" class="btn btn-lg btn-primary">Enregistrer</button>
-                                    </div>
-                                </form>
+                                        <div class="text-right">
+                                            <button type="submit" name="updateProm" class="btn btn-lg btn-primary">Enregistrer</button>
+                                        </div>
+                                    </form>
+                                </c:when>
+                                <c:otherwise>
+                                    <form action="${pageContext.request.contextPath}/addProm" method="post" class="">
+                                        <div class="form-group">
+                                            <label for="name">Nom de la promotion</label>
+                                            <input type="text" class="input-lg form-control" id="name" name="name"  placeholder="Nom">
+                                        </div>
+
+                                        <div class="text-right">
+                                            <button type="submit" name="addProm" class="btn btn-lg btn-primary">Enregistrer</button>
+                                        </div>
+                                    </form>
+                                </c:otherwise>
+                            </c:choose>
                             </div>
                         </div>
                         <!-- /.row -->

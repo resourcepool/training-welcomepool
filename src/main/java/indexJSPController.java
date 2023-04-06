@@ -56,12 +56,13 @@ public class indexJSPController extends HttpServlet {
         String PASSWORD = "1xqOOMTNMjnzZ76TPaRA";
         MemberDAO m = new MemberDAO(URL, USERNAME, PASSWORD);
         ReviewDAO rev = new ReviewDAO(URL,USERNAME,PASSWORD);
-        //PromotionDAO pro = new PromotionDAO(URL,USERNAME,PASSWORD);
+        PromotionDAO pro = new PromotionDAO(URL,USERNAME,PASSWORD);
         List<Member> mems = new ArrayList<>();
         List<Review> reviews = new ArrayList<>();
-        //List<Promotion> prom = new ArrayList<>();
+        List<Promotion> prom = new ArrayList<>();
         try {
             reviews = rev.getAll();
+            prom = pro.getAll();
             mems = m.getAll();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -69,7 +70,7 @@ public class indexJSPController extends HttpServlet {
 
         req.setAttribute("revSize",reviews.size());
         req.setAttribute("memSize",mems.size());
-        //req.setAttribute("promSize",prom.size());
+        req.setAttribute("promSize",prom.size());
 
         List<Review> short_reviews = new ArrayList<>();
         if (reviews.size() > 0) {
@@ -78,8 +79,16 @@ public class indexJSPController extends HttpServlet {
             }
 
         }
+        List<Promotion> short_proms = new ArrayList<>();
+        if (prom.size() > 0) {
+            for(int i = 0; prom.size() > 3 ? i < 3 : i < prom.size(); i++){
+                short_proms.add(prom.get(i));
+            }
+
+        }
 
         req.setAttribute("sh_reviews",short_reviews);
+        req.setAttribute("sh_promo",short_proms);
         req.setAttribute("members", mems);
 
         req.getRequestDispatcher("index.jsp").forward(req, resp);

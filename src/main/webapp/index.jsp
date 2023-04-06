@@ -78,8 +78,7 @@
                                     <i class="fa fa-users fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-
-                                    <div class="huge"><!--<c:out value="${promSize}"/>--></div>
+                                    <div class="huge"><c:out value="${promSize}"/></div>
                                     <div class="huge-label">Promotions</div>
                                 </div>
                             </div>
@@ -221,21 +220,17 @@
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <div class="list-group">
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-users fa-fw"></i> Promo Février
-                                    <span class="pull-right text-muted small"><em>8 membres</em>
-                                    </span>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-users fa-fw"></i> Promo Mars
-                                    <span class="pull-right text-muted small"><em>6 membres</em>
-                                    </span>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-users fa-fw"></i> Promo Avril
-                                    <span class="pull-right text-muted small"><em>0 membre</em>
-                                    </span>
-                                </a>
+                                <c:forEach items="${sh_promo}" var="sh_promo">
+                                    <form method="post" action="${pageContext.request.contextPath}/addProm">
+                                        <button class="list-group-item" name="modifProm">
+                                            <input type="hidden" value="${sh_promo.name}" name="name">
+                                            <input type="hidden" value="${sh_promo.id}" name="id">
+                                            <i class="fa fa-users fa-fw"></i> <c:out value="${sh_promo.name}"/>
+                                            <!-- <span class="pull-right text-muted small"><em><c:out value="${sh_promo.name}"/> membre(s)</em> -->
+                                            </span>
+                                        </a>
+                                    </form>
+                               </c:forEach>
                             </div>
                             <!-- /.list-group -->
                             <a href="addProm" class="btn btn-default btn-block">Créer une nouvelle promotion</a>
