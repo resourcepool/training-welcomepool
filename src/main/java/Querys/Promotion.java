@@ -2,6 +2,11 @@ package main.java.Querys;
 
 public class Promotion {
 
+    public Promotion(){}
+    public Promotion(String name) {
+        this.name = name;
+    }
+
     private int id;
 
     private String name;

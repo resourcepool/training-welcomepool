@@ -71,14 +71,14 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-xs-12">
-                                <form action="" method="post" class="">
+                                <form action="${pageContext.request.contextPath}/addProm" method="post" class="">
                                     <div class="form-group">
-                                        <label for="name">Nom</label>
-                                        <input type="text" class="input-lg form-control" id="name" placeholder="Nom">
+                                        <label for="name">Nom de la promotion</label>
+                                        <input type="text" class="input-lg form-control" id="name" name="name" placeholder="Nom">
                                     </div>
 
                                     <div class="text-right">
-                                        <button type="submit" class="btn btn-lg btn-primary">Enregistrer</button>
+                                        <button type="submit" name="addProm" class="btn btn-lg btn-primary">Enregistrer</button>
                                     </div>
                                 </form>
                             </div>
