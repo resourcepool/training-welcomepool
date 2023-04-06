@@ -123,7 +123,7 @@
                                     <i class="fa fa-calendar fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge"><c:out value="${memSize}"/></div>
+                                    <div class="huge"><c:out value="${revSize}"/></div>
                                     <div class="huge-label">Code reviews programmées</div>
                                 </div>
                             </div>
@@ -198,21 +198,13 @@
                         </div>
                         <div class="panel-body">
                             <table class="table table-striped">
+                            <c:forEach items="${sh_reviews}" var="sh_reviews">
                                 <tr>
-                                    <td>Code review 1</td>
-                                    <td>Promo Février</td>
-                                    <td class="text-right"><span class="text-muted small">24/02/2017</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Code review 2</td>
-                                    <td>Promo Février</td>
-                                    <td class="text-right"><span class="text-muted small">05/03/2017</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Code review 1</td>
-                                    <td>Promo Mars</td>
-                                    <td class="text-right"><span class="text-muted small">10/03/2017</span></td>
-                                </tr>
+                                    <td><c:out value="${sh_reviews.name}"/></td>
+                                    <td><c:out value="${sh_reviews.promotion}"/></td>
+                                    <td class="text-right"><span class="text-muted small"><c:out value="${sh_reviews.date}"/></span></td>
+                               </tr>
+                           </c:forEach>
                             </table>
                             <a href="addReview" class="btn btn-default btn-block">Programmer une code review</a>
                         </div>

@@ -60,16 +60,26 @@ public class indexJSPController extends HttpServlet {
         List<Member> mems = new ArrayList<>();
         List<Review> reviews = new ArrayList<>();
         //List<Promotion> prom = new ArrayList<>();
-        /*try {
-            prom = pro.getAll();
+        try {
             reviews = rev.getAll();
             mems = m.getAll();
         } catch (SQLException e) {
             throw new RuntimeException(e);
-        }*/
+        }
+
         req.setAttribute("revSize",reviews.size());
         req.setAttribute("memSize",mems.size());
         //req.setAttribute("promSize",prom.size());
+
+        List<Review> short_reviews = new ArrayList<>();
+        if (reviews.size() > 0) {
+            for(int i = 0; reviews.size() > 3 ? i < 3 : i < reviews.size(); i++){
+                short_reviews.add(reviews.get(i));
+            }
+
+        }
+
+        req.setAttribute("sh_reviews",short_reviews);
         req.setAttribute("members", mems);
 
         req.getRequestDispatcher("index.jsp").forward(req, resp);
