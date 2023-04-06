@@ -122,7 +122,7 @@
                                     <i class="fa fa-calendar fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">3</div>
+                                    <div class="huge"><c:out value="${revSize}"/></div>
                                     <div class="huge-label">Code reviews programmées</div>
                                 </div>
                             </div>
@@ -194,7 +194,6 @@
                 <div class="col-lg-4">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <div class="huge"><c:out value="${revSize}"/></div>
                             <i class="fa fa-calendar fa-fw"></i> Codes reviews programmées
                         </div>
                         <div class="panel-body">
