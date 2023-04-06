@@ -90,8 +90,6 @@ public class addMemberJspController extends HttpServlet {
         MemberDAO mDAO = new MemberDAO(URL, USERNAME, PASSWORD);
 
         if (request.getParameter("addMem") != null) {
-            logger.info("COUCOU");
-            logger.info(request.getParameter("name"));
 
             String name = request.getParameter("name");
             String email = request.getParameter("email");
