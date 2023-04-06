@@ -78,7 +78,7 @@
                                     <i class="fa fa-users fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">4</div>
+                                    <div class="huge"><c:out value="${promSize}"/></div>
                                     <div class="huge-label">Promotions</div>
                                 </div>
                             </div>
@@ -100,7 +100,7 @@
                                     <i class="fa fa-user fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">46</div>
+                                    <div class="huge"><c:out value="${memSize}"/></div>
                                     <div class="huge-label">Membres inscrits</div>
                                 </div>
                             </div>
@@ -172,7 +172,7 @@
                                                             <td><c:out value="${review.description}"/> </td>
                                                             <td>
                                                             <button name="modifRev" type="submit" class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i> Modifier</button>
-                                                            <button name="deleteRev" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> Supprimer</a>
+                                                            <button name="deleteRev" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> Supprimer</button>
                                                             </td>
                                                         </form>
                                                    </tr>
@@ -194,6 +194,7 @@
                 <div class="col-lg-4">
                     <div class="panel panel-default">
                         <div class="panel-heading">
+                            <div class="huge"><c:out value="${revSize}"/></div>
                             <i class="fa fa-calendar fa-fw"></i> Codes reviews programmées
                         </div>
                         <div class="panel-body">

@@ -173,7 +173,7 @@
                                                             <td><c:out value="${member.promotion}"/> </td>
                                                             <td>
                                                             <button name="modifMem" type="submit" class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i> Modifier</button>
-                                                            <button name="deleteMem" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> Supprimer</a>
+                                                            <button name="deleteMem" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> Supprimer</button>
                                                             </td>
                                                         </form>
                                                    </tr>
@@ -222,7 +222,7 @@
                             <div class="list-group">
                                 <c:forEach items="${sh_promo}" var="sh_promo">
                                     <form method="post" action="${pageContext.request.contextPath}/addProm">
-                                        <button class="list-group-item" name="modifProm">
+                                        <button class="list-group-item" name="modifProm"></button>
                                             <input type="hidden" value="${sh_promo.name}" name="name">
                                             <input type="hidden" value="${sh_promo.id}" name="id">
                                             <i class="fa fa-users fa-fw"></i> <c:out value="${sh_promo.name}"/>
