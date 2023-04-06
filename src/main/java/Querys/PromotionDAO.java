@@ -30,16 +30,19 @@ public class PromotionDAO extends DAO<Promotion> {
     }
 
     public int add(Promotion promotion) throws SQLException{
+        System.out.println("add PromotionDAO");
         int promotionId = 0;
         //String getId;
-        String sql = " insert into classes (name) values ('?')";
+        String sql = " insert into classes (name) values (?)";
         try (Connection conn = getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             stmt.setString(1, promotion.getName());
             stmt.executeUpdate();
+            System.out.println(sql);
             try (ResultSet rs = stmt.getGeneratedKeys()) {
                 if (rs.next()) {
                     promotionId = rs.getInt(1);
+                    System.out.println(promotionId);
                 }
             }
         }

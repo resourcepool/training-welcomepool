@@ -29,7 +29,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -86,7 +85,7 @@ public class addReviewJspController extends HttpServlet {
             String promotion = request.getParameter("classes_selected");
             //Date date = Date.valueOf(request.getParameter("date"));
             String description = request.getParameter("description");
-            System.out.println(promotion);
+
             Date date = new Date(1222222);
 
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.FRANCE);
