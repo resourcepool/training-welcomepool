@@ -4,9 +4,9 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public abstract class DAO<T> {
-    private String url;
-    private String username;
-    private String password;
+    protected String url;
+    protected String username;
+    protected String password;
 
     // Constructeur pour initialiser les attributs de connexion
 
