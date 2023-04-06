@@ -16,6 +16,7 @@
  */
 package main.java;
 
+import main.java.Querys.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -26,6 +27,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.Date;
+import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 
 /**
  * <p>
@@ -49,7 +57,22 @@ public class addReviewJspController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String URL = "jdbc:mysql://localhost:3306/welcome_pool_Code_Review";
+        String USERNAME = "SVC_Java";
+        String PASSWORD = "1xqOOMTNMjnzZ76TPaRA";
+        PromotionDAO dao = new PromotionDAO(URL, USERNAME, PASSWORD);
+        List<String> promotionsNames = new ArrayList<>();
 
+        try {
+            List<Promotion> classes = dao.getAll();
+            for(Promotion p: classes) {
+                System.out.println(p.getName());
+                promotionsNames.add(p.getName());
+            }
+        } catch (Exception e){
+            System.out.println(e);
+        }
+        req.setAttribute("classes", promotionsNames);
         RequestDispatcher dispatcher = req.getRequestDispatcher("/add_review.jsp");
         dispatcher.forward(req, resp);
     }
@@ -59,8 +82,29 @@ public class addReviewJspController extends HttpServlet {
         Logger logger = LoggerFactory.getLogger(addMemberJspController.class);
 
         if (request.getParameter("addReview") != null) {
-            logger.info("COUCOU");
-            logger.info(request.getParameter("name"));
+            logger.info("COUCOU_Review");
+            String name = request.getParameter("name");
+            String promotion = request.getParameter("classes_selected");
+            //Date date = Date.valueOf(request.getParameter("date"));
+            String description = request.getParameter("description");
+            System.out.println(promotion);
+            Date date = new Date(1222222);
+
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.FRANCE);
+
+            String c_selected = request.getParameter("classes_selected");
+
+            String URL = "jdbc:mysql://localhost:3306/welcome_pool_Code_Review";
+            String USERNAME = "SVC_Java";
+            String PASSWORD = "1xqOOMTNMjnzZ76TPaRA";
+            ReviewDAO rDAO = new ReviewDAO(URL, USERNAME, PASSWORD);
+
+            try {
+                rDAO.add(new Review(name,description,date,promotion));
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+
         }
         response.sendRedirect("/Pool/index");
         //request.getRequestDispatcher("/index").forward(request,response);

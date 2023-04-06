@@ -18,6 +18,8 @@ package main.java;
 
 import main.java.Querys.Member;
 import main.java.Querys.MemberDAO;
+import main.java.Querys.Promotion;
+import main.java.Querys.PromotionDAO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -58,11 +60,22 @@ public class addMemberJspController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String URL = "jdbc:mysql://localhost:3306/welcome_pool_Code_Review";
+        String USERNAME = "SVC_Java";
+        String PASSWORD = "1xqOOMTNMjnzZ76TPaRA";
+        PromotionDAO dao = new PromotionDAO(URL, USERNAME, PASSWORD);
+        List<String> promotionsNames = new ArrayList<>();
 
-        List<String> classes = new ArrayList<>();
-        classes.add("Fevrier");
-        classes.add("Mars");
-        req.setAttribute("classes", classes);
+        try {
+            List<Promotion> classes = dao.getAll();
+            for(Promotion p: classes) {
+                System.out.println(p.getName());
+                promotionsNames.add(p.getName());
+            }
+        } catch (Exception e){
+            System.out.println(e);
+        }
+        req.setAttribute("classes", promotionsNames);
 
         RequestDispatcher dispatcher = req.getRequestDispatcher("/add_member.jsp");
         dispatcher.forward(req, resp);

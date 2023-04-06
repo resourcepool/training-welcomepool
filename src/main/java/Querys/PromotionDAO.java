@@ -8,7 +8,7 @@ public class PromotionDAO extends DAO<Promotion> {
     public PromotionDAO() {}
 
     public PromotionDAO(String url, String user, String password){
-        super();
+        super(url, user, password);
     }
 
     public ArrayList<Promotion> getAll() throws SQLException {
