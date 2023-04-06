@@ -107,7 +107,9 @@
                                             <label for="promotion">Promotion</label>
                                             <select class="input-lg form-control" name="classes_selected" id="promotion">
                                                 <c:forEach items="${classes}" var="classes">
-                                                    <option value=<c:out value="${classes}"/> ><c:out value="${classes}"/></option>
+                                                    <c:set var="class_id" value="${classes.name.concat(' , ').concat(classes.id)}" scope = "page"/>
+                                                    <option value= <c:out value="${classes.id}"/> > <c:out value="${classes.name}"/></option>
+
                                                 </c:forEach>
                                             </select>
                                         </div>

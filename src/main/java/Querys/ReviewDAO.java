@@ -39,23 +39,10 @@ public class ReviewDAO extends DAO<Review> {
             stmt.setString(1, review.getName());
             stmt.setString(2, review.getDescription());
             stmt.setDate(3, review.getDate());
-            System.out.println(review.getDescription());
-            String getId = "SELECT id FROM classes WHERE name= '" + review.getPromotion() +"'";
-            System.out.println(getId);
-            PreparedStatement stmt2 = conn.prepareStatement(getId);
-            //stmt2.setString(1, review.getPromotion());
-            ResultSet rs = stmt2.executeQuery(getId);
-            if (rs.next() ){
-                stmt.setInt(4, rs.getInt("id"));
-                stmt.executeUpdate();
-
-            }
-
-            try (ResultSet rs2 = stmt.getGeneratedKeys()) {
-                if (rs2.next()) reviewId = rs2.getInt(1);
-            }
+            stmt.setInt(4,review.getClassId());
+            stmt.executeUpdate();
         }
-        return reviewId;
+        return 1;
     }
 
     public int deleteById(int id) throws SQLException {

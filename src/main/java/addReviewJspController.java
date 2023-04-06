@@ -61,50 +61,43 @@ public class addReviewJspController extends HttpServlet {
         String PASSWORD = "1xqOOMTNMjnzZ76TPaRA";
         PromotionDAO dao = new PromotionDAO(URL, USERNAME, PASSWORD);
         List<String> promotionsNames = new ArrayList<>();
+        List<Promotion> classes = new ArrayList<>();
 
         try {
-            List<Promotion> classes = dao.getAll();
-            for(Promotion p: classes) {
-                System.out.println(p.getName());
-                promotionsNames.add(p.getName());
-            }
+            classes = dao.getAll();
         } catch (Exception e){
             System.out.println(e);
         }
-        req.setAttribute("classes", promotionsNames);
+        req.setAttribute("classes", classes);
         RequestDispatcher dispatcher = req.getRequestDispatcher("/add_review.jsp");
         dispatcher.forward(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        String URL = "jdbc:mysql://localhost:3306/welcome_pool_Code_Review";
+        String USERNAME = "SVC_Java";
+        String PASSWORD = "1xqOOMTNMjnzZ76TPaRA";
 
         if (request.getParameter("addReview") != null) {
             String name = request.getParameter("name");
-            String promotion = request.getParameter("classes_selected");
-            //Date date = Date.valueOf(request.getParameter("date"));
+            int c_id = Integer.parseInt(request.getParameter("classes_selected"));
+
             String description = request.getParameter("description");
 
             Date date = new Date(1222222);
 
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.FRANCE);
 
-            String c_selected = request.getParameter("classes_selected");
 
-            String URL = "jdbc:mysql://localhost:3306/welcome_pool_Code_Review";
-            String USERNAME = "SVC_Java";
-            String PASSWORD = "1xqOOMTNMjnzZ76TPaRA";
             ReviewDAO rDAO = new ReviewDAO(URL, USERNAME, PASSWORD);
 
             try {
-                rDAO.add(new Review(name,description,date,promotion));
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
+                Review r = new Review(name,description,date);
+                r.setClassId(c_id);
+                System.out.println(c_id);
+                rDAO.add(r);
 
-            try {
-                rDAO.add(new Review(name,description,date,promotion));
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
