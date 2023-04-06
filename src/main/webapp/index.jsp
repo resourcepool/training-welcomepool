@@ -120,7 +120,9 @@
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
-                                    <i class="fa fa-calendar fa-5x"></i>
+                                    <a href="indexReview" class="nostyle">
+                                        <i class="fa fa-calendar fa-5x"></i>
+                                    </a>
                                 </div>
                                 <div class="col-xs-9 text-right">
                                     <div class="huge"><c:out value="${revSize}"/></div>

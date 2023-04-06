@@ -2,6 +2,7 @@ package main.java.Querys;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Optional;
 
 
 public class MemberDAO extends DAO<Member> {
@@ -14,7 +15,7 @@ public class MemberDAO extends DAO<Member> {
     public ArrayList<Member> getAll() throws SQLException {
         ArrayList<Member> members = new ArrayList<>();
         Connection conn = getConnection();
-        String sql = "SELECT m.id, m.name, email, birthdate, class_id, c.name as class_name FROM members as m INNER JOIN classes as c ON m.class_id = c.id";
+        String sql = "SELECT m.id, m.name, email, birthdate, class_id, c.name as class_name FROM members as m LEFT JOIN classes as c ON m.class_id = c.id";
 
         PreparedStatement stmt = conn.prepareStatement(sql);
         ResultSet rs = stmt.executeQuery();
@@ -24,8 +25,17 @@ public class MemberDAO extends DAO<Member> {
             member.setName(rs.getString("m.name"));
             member.setEmail(rs.getString("email"));
             member.setBirthdate(rs.getDate("birthdate"));
-            member.setClassId(rs.getInt("class_id"));
-            member.setPromotion(rs.getString("class_name"));
+            int id = rs.getInt("class_id");
+            if(rs.wasNull())
+            {
+                member.setClassId(-1);
+                member.setPromotion("");
+            }
+            else {
+                member.setClassId(id);
+                member.setPromotion(rs.getString("class_name"));
+            }
+
 
             members.add(member);
 
