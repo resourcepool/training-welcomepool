@@ -199,21 +199,13 @@
                         </div>
                         <div class="panel-body">
                             <table class="table table-striped">
-                                <tr>
-                                    <td>Code review 1</td>
-                                    <td>Promo Février</td>
-                                    <td class="text-right"><span class="text-muted small">24/02/2017</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Code review 2</td>
-                                    <td>Promo Février</td>
-                                    <td class="text-right"><span class="text-muted small">05/03/2017</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Code review 1</td>
-                                    <td>Promo Mars</td>
-                                    <td class="text-right"><span class="text-muted small">10/03/2017</span></td>
-                                </tr>
+                                <c:forEach items="${sh_reviews}" var="sh_reviews">
+                                    <tr>
+                                        <td><c:out value="${sh_reviews.name}"/></td>
+                                        <td><c:out value="${sh_reviews.promotion}"/></td>
+                                        <td class="text-right"><span class="text-muted small"><c:out value="${sh_reviews.date}"/></span></td>
+                                    </tr>
+                                </c:forEach>
                             </table>
                             <a href="addReview" class="btn btn-default btn-block">Programmer une code review</a>
                         </div>
@@ -228,21 +220,17 @@
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <div class="list-group">
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-users fa-fw"></i> Promo Février
-                                    <span class="pull-right text-muted small"><em>8 membres</em>
-                                    </span>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-users fa-fw"></i> Promo Mars
-                                    <span class="pull-right text-muted small"><em>6 membres</em>
-                                    </span>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-users fa-fw"></i> Promo Avril
-                                    <span class="pull-right text-muted small"><em>0 membre</em>
-                                    </span>
-                                </a>
+                                <c:forEach items="${sh_promo}" var="sh_promo">
+                                    <form method="post" action="${pageContext.request.contextPath}/addProm">
+                                        <button class="list-group-item" name="modifProm"></button>
+                                        <input type="hidden" value="${sh_promo.name}" name="name">
+                                        <input type="hidden" value="${sh_promo.id}" name="id">
+                                        <i class="fa fa-users fa-fw"></i> <c:out value="${sh_promo.name}"/>
+                                        <!-- <span class="pull-right text-muted small"><em><c:out value="${sh_promo.name}"/> membre(s)</em> -->
+                                        </span>
+                                        </a>
+                                    </form>
+                                </c:forEach>
                             </div>
                             <!-- /.list-group -->
                             <a href="addProm" class="btn btn-default btn-block">Créer une nouvelle promotion</a>
