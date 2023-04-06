@@ -103,6 +103,29 @@ public class addReviewJspController extends HttpServlet {
                 throw new RuntimeException(e);
             }
 
+            logger.info("COUCOU_Review");
+            String name = request.getParameter("name");
+            String promotion = request.getParameter("classes_selected");
+            //Date date = Date.valueOf(request.getParameter("date"));
+            String description = request.getParameter("description");
+
+            Date date = new Date(1222222);
+
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.FRANCE);
+
+            String c_selected = request.getParameter("classes_selected");
+
+            String URL = "jdbc:mysql://localhost:3306/welcome_pool_Code_Review";
+            String USERNAME = "SVC_Java";
+            String PASSWORD = "1xqOOMTNMjnzZ76TPaRA";
+            ReviewDAO rDAO = new ReviewDAO(URL, USERNAME, PASSWORD);
+
+            try {
+                rDAO.add(new Review(name,description,date,promotion));
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+
         }
         response.sendRedirect("/Pool/index");
         //request.getRequestDispatcher("/index").forward(request,response);

@@ -18,6 +18,8 @@ package main.java;
 
 import main.java.Querys.Member;
 import main.java.Querys.MemberDAO;
+import main.java.Querys.Promotion;
+import main.java.Querys.PromotionDAO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -58,6 +60,11 @@ public class addMemberJspController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String URL = "jdbc:mysql://localhost:3306/welcome_pool_Code_Review";
+        String USERNAME = "SVC_Java";
+        String PASSWORD = "1xqOOMTNMjnzZ76TPaRA";
+        PromotionDAO dao = new PromotionDAO(URL, USERNAME, PASSWORD);
+        List<String> promotionsNames = new ArrayList<>();
 
         try {
             List<Promotion> classes = dao.getAll();
