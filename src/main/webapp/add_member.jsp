@@ -75,6 +75,7 @@
                                     <form action="${pageContext.request.contextPath}/addmem" method="post" class="">
                                         <c:choose>
                                         <c:when test="${email!=null}">
+                                            <input type="hidden" value="${id}" name="id">
                                             <div class="form-group">
                                                 <label for="name">Nom</label>
                                                 <input type="text" class="input-lg form-control"  value="${name}" name="name"  placeholder="Nom">

@@ -63,6 +63,7 @@ public class MemberDAO extends DAO<Member> {
     }
 
     public int update(Member member) throws SQLException {
+        System.out.println("Update");
         String sql = "UPDATE members SET name=?, email=?, birthdate=?, class_id=? WHERE id=?";
         int rowsUpdated;
         try (Connection conn = getConnection();

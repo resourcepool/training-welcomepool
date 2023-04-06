@@ -142,7 +142,9 @@ public class addMemberJspController extends HttpServlet {
             int id = Integer.parseInt(request.getParameter("id"));
             try {
                 System.out.println("gdhs");
-                mDAO.update(new Member(name,email,birthdate,id));
+                Member m = new Member(name,email,birthdate,1);
+                m.setId(id);
+                mDAO.update(m);
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }

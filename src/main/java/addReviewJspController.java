@@ -56,12 +56,8 @@ public class addReviewJspController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Logger logger = LoggerFactory.getLogger(addReviewJspController.class);
 
-        if (request.getParameter("addReview") != null) {
-            logger.info("COUCOU");
-            logger.info(request.getParameter("name"));
-        }
+
         response.sendRedirect("/Pool/index");
         //request.getRequestDispatcher("/index").forward(request,response);
         //request.getRequestDispatcher("/WEB-INF/some-result.jsp").forward(request, response);

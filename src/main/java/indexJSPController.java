@@ -56,18 +56,15 @@ public class indexJSPController extends HttpServlet {
         String URL = "jdbc:mysql://localhost:3306/welcome_pool_Code_Review";
         String USERNAME = "SVC_Java";
         String PASSWORD = "1xqOOMTNMjnzZ76TPaRA";
-        //MemberDAO m = new MemberDAO(URL, USERNAME, PASSWORD);
+        MemberDAO m = new MemberDAO(URL, USERNAME, PASSWORD);
 
         List<Member> mems = new ArrayList<>();
-        mems.add(new Member("a","b",new Date(1999,12,12),1));
-        req.setAttribute("members", mems);
-
-        /*try {
-            //mems = m.getAll();
-
+        try {
+            mems = m.getAll();
         } catch (SQLException e) {
             throw new RuntimeException(e);
-        }*/
+        }
+        req.setAttribute("members", mems);
 
         req.getRequestDispatcher("index.jsp").forward(req, resp);
 

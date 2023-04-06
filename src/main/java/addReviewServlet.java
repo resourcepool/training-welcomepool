@@ -15,11 +15,7 @@ public class addReviewServlet extends HttpServlet{
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Logger logger = LoggerFactory.getLogger(addMemberServlet.class);
 
-        if (request.getParameter("addReview") != null) {
-            //logger.info(request.getParameterValues("name").toString());
-        }
 
         //request.getRequestDispatcher("/WEB-INF/some-result.jsp").forward(request, response);
     }
