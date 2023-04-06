@@ -79,16 +79,17 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-xs-12">
-                                <form action="${pageContext.request.contextPath}/addReview" method="post" class="">
+                                <form action="${pageContext.request.contextPath}/addReview" method="post" id="hg" class="">
                                     <div class="form-group">
                                         <label for="name">Nom</label>
                                         <input type="text" class="input-lg form-control" id="name" name="name" placeholder="Nom">
                                     </div>
                                     <div class="form-group">
                                         <label for="promotion">Promotion</label>
-                                        <select class="input-lg form-control" id="promotion">
-                                            <option>Février</option>
-                                            <option>Mars</option>
+                                        <select class="input-lg form-control" name="classes_selected" id="promotion">
+                                            <c:forEach items="${classes}" var="classes">
+                                                <option value=<c:out value="${classes}"/> ><c:out value="${classes}"/></option>
+                                            </c:forEach>
                                         </select>
                                     </div>
                                     <div class="form-group">
@@ -99,7 +100,7 @@
                                     <div class="form-group">
                                         <label for="description">Description</label>
                                         <br>
-                                        <textarea id="description" cols="50" rows="4"></textarea>
+                                        <textarea id="description" cols="50" form="hg" name="description" rows="4"></textarea>
                                     </div>
 
 

@@ -32,21 +32,26 @@ public class ReviewDAO extends DAO<Review> {
 
     public int add(Review review) throws SQLException {
         int reviewId = 0;
-        String sql = "INSERT INTO code_review_schedule (name, description, datetime, class_id) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO code_reviews (name, description, datetime, class_id) VALUES (? , ?, ? , ?)";
         try (Connection conn = getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);) {
             stmt.setString(1, review.getName());
             stmt.setString(2, review.getDescription());
             stmt.setDate(3, review.getDate());
-            String getId = "SELECT class_id FROM class WHERE name=" + review.getPromotion();
-            Statement stmt2 = conn.createStatement();
+            System.out.println(review.getDescription());
+            String getId = "SELECT id FROM classes WHERE name= '" + review.getPromotion() +"'";
+            System.out.println(getId);
+            PreparedStatement stmt2 = conn.prepareStatement(getId);
+            //stmt2.setString(1, review.getPromotion());
             ResultSet rs = stmt2.executeQuery(getId);
+            if (rs.next() ){
+                stmt.setInt(4, rs.getInt("id"));
+                stmt.executeUpdate();
 
-            if (rs.next()) stmt.setInt(4, rs.getInt("class_id"));
-            stmt.executeUpdate();
+            }
 
             try (ResultSet rs2 = stmt.getGeneratedKeys()) {
-                if (rs.next()) reviewId = rs2.getInt(1);
+                if (rs2.next()) reviewId = rs2.getInt(1);
             }
         }
         return reviewId;

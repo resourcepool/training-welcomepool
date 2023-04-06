@@ -59,10 +59,17 @@ public class addMemberJspController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        List<String> classes = new ArrayList<>();
-        classes.add("Fevrier");
-        classes.add("Mars");
-        req.setAttribute("classes", classes);
+        try {
+            List<Promotion> classes = dao.getAll();
+            for(Promotion p: classes) {
+                System.out.println(p.getName());
+                promotionsNames.add(p.getName());
+            }
+        } catch (Exception e){
+            System.out.println(e);
+        }
+        req.setAttribute("classes", promotionsNames);
+
         RequestDispatcher dispatcher = req.getRequestDispatcher("/add_member.jsp");
         dispatcher.forward(req, resp);
     }
@@ -76,6 +83,9 @@ public class addMemberJspController extends HttpServlet {
         MemberDAO mDAO = new MemberDAO(URL, USERNAME, PASSWORD);
 
         if (request.getParameter("addMem") != null) {
+            logger.info("COUCOU");
+            logger.info(request.getParameter("name"));
+
             String name = request.getParameter("name");
             String email = request.getParameter("email");
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.FRANCE);
