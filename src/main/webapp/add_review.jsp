@@ -14,6 +14,7 @@
 
     <!-- Bootstrap CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="css/datepicker.css" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link href="css/style.css" rel="stylesheet" type="text/css">
@@ -49,7 +50,14 @@
                     </li>
                     <li><a href="addmem"><i class="fa fa-user fa-fw"></i> Ajouter un membre</a>
                     </li>
-                    <li><a href="addReview"><i class="fa fa-calendar fa-fw"></i> Créer un rendez-vous</a>
+                    <li>
+                    <div class="input-group date" data-provide="datepicker">
+                        <input type="text" class="form-control">
+                        <div class="input-group-addon">
+                            <span class="glyphicon glyphicon-th"></span>
+                        </div>
+                    </div>
+                    <a href="addReview"><i class="fa fa-calendar fa-fw"></i> Créer un rendez-vous</a>
                     </li>
                 </ul>
             </li>
@@ -86,7 +94,7 @@
                                     <div class="form-group">
                                         <label for="date">Date de la Code Review</label>
                                         <br>
-                                        <input id="date" class="datepicker" data-date-format="mm/dd/yyyy">
+                                        <input id="date" class="datepicker">
                                     </div>
                                     <div class="form-group">
                                         <label for="description">Description</label>
@@ -125,9 +133,11 @@
 
 <!-- jQuery -->
 <script src="js/jquery-3.1.1.min.js"></script>
+<script src="js/moment-with-locales.min.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
 <script src="js/bootstrap.min.js"></script>
+<script type="module" src="js/review.js"></script>
 
 </body>
 
